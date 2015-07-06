@@ -52,7 +52,7 @@ void main(int argc, char *argv[]) {
 
 	double x_catch;
 	
-	x_catch = dao.getSpeed() * (60 * dao.getSpeed()) / ((bazzy.getSpeed() * dao_dist) - (dao.getSpeed() * bazzy_dist));
+	x_catch = bazzy.getSpeed() * (60 * dao.getSpeed()) / ((bazzy.getSpeed() * dao_dist) - (dao.getSpeed() * bazzy_dist));
 
 	cout << "몇 바퀴째에 BAZZY는 DAO를 따라잡을 수 있을까? " << ceil(x_catch) << "바퀴" << endl;
 

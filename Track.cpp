@@ -32,10 +32,17 @@ void Track::setTotPoint(int totPoint) {
 	}
 }
 
+/*-------------------------------------------------
+	정점 a, b 사이의 선분 길이
+---------------------------------------------------*/
 double Track::getLine(Point a, Point b) {
 	return sqrt(pow(abs(a.getX()-b.getX()), 2) + pow(abs(a.getY()-b.getY()), 2));
 }
 
+/*-------------------------------------------------
+	정점 p1, p2, p3이 이루는 삼각형의 높이
+	- 각 정점을 이은 선분 중 가장 긴 선이 밑변
+---------------------------------------------------*/
 double Track::getHeight(Point p1, Point p2, Point p3) {
 	double bottom_line;
 	double left_line;
@@ -76,6 +83,10 @@ double Track::getHeight(Point p1, Point p2, Point p3) {
 	return height;
 }
 
+/*-------------------------------------------------
+	정점 p1, p2, p3이 이루는 삼각형 중 p2 의 각도
+	- 각 정점을 이은 선분 중 가장 긴 선이 밑변
+---------------------------------------------------*/
 double Track::getAngle(Point p1, Point p2, Point p3) {
 	double height = getHeight(p1, p2, p3);
 	double bottom, left, right;

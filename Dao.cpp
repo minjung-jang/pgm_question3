@@ -10,14 +10,17 @@ double Dao::getSpeed() const {
 	return m_speed;
 }
 
-double Dao::getTimePerTrack() const {
-	return m_time_per_track;
+double Dao::getDistPerTrack() const {
+	return m_dist_per_track;
 }
 
-void Dao::setTimePerTrack(double timePerTrack) {
-	m_time_per_track = timePerTrack;
+void Dao::setDistPerTrack(double distPerTrack) {
+	m_dist_per_track = distPerTrack;
 }
 
+/*----------------------------------------------
+	다오의 트랙 이동 경로 계산
+------------------------------------------------*/
 double Dao::run(Track& track) {
 	double totLine = 0.0;
 
@@ -26,7 +29,7 @@ double Dao::run(Track& track) {
 		cout << "Line : " << track.getLine(track.getPoint()[i], track.getPoint()[((i+1) == track.getTotPoint()? 0 : i+1)]) << endl;
 	}
 
-	setTimePerTrack(totLine);
+	setDistPerTrack(totLine);
 
-	return getTimePerTrack();
+	return getDistPerTrack();
 }

@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Player.h"
 #include "Bazzy.h"
-#include <windows.h>
+
 using namespace std;
 
 Bazzy::Bazzy(double speed) : Player(speed) {
@@ -11,14 +11,17 @@ double Bazzy::getSpeed() const {
 	return m_speed;
 }
 
-double Bazzy::getTimePerTrack() const {
-	return m_time_per_track;
+double Bazzy::getDistPerTrack() const {
+	return m_dist_per_track;
 }
 
-void Bazzy::setTimePerTrack(double timePerTrack) {
-	m_time_per_track = timePerTrack;
+void Bazzy::setDistPerTrack(double distPerTrack) {
+	m_dist_per_track = distPerTrack;
 }
 
+/*----------------------------------------------
+	배찌의 트랙 이동 경로 계산
+------------------------------------------------*/
 double Bazzy::run(Track& track) {
 	double totLine = 0.0;
 	Point p_pre(track.getPoint()[track.getTotPoint()-1].getX(), track.getPoint()[track.getTotPoint()-1].getY());
@@ -58,8 +61,6 @@ double Bazzy::run(Track& track) {
 					break;
 
 				cout << "angle : " << angle << " i_pos : " << i_pos << " cur_pos : " << cur_pos << " max_pos : " << max_pos << endl;
-
-			//	Sleep(1000);
 			}
 
 			totLine += track.getLine(p_cur, p_move);
@@ -77,7 +78,7 @@ double Bazzy::run(Track& track) {
 		} while (cur_pos != 0);
 	}
 
-	setTimePerTrack(totLine);
+	setDistPerTrack(totLine);
 
-	return getTimePerTrack();
+	return getDistPerTrack();
 }
